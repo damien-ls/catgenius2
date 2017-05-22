@@ -57,42 +57,42 @@ extern "C" {
 #define SETUPBUTTON         (RB5 ? 0 : 1) /* Button Auto setup */
 
 /* Sensors */
-#define CATSENSOR_LED       RC2
+#define CATSENSOR_LED       LATC2
 #define CATSENSOR           RB4
-#define WATERSENSOR_LED     RB2
-#define WATERVALVE         RB3	/* Water sensor, directly controls Water valve (RL1) */
+#define WATERSENSOR_LED     LATB2
+#define WATERVALVE          RB3	/* Water sensor, directly controls Water valve (RL1) */
 #define HEATSENSOR          RB1	/* Over heat detector (U4) */
 
    
     
 /* OUTPUT */
 /* Special purpose pins */
-#define	UART_TXD        RC6	
-#define	UART_RXD    	RC7
+#define	UART_TXD        LATC6	
+#define	UART_RXD    	LATC7
     
     
 /* Indicators */
-#define LED_1           RC5
-#define LED_2           RA2 
-#define LED_3           RA3 
-#define LED_4           RA5
-#define LED_ERROR       RC0 
-#define BEEPER          RC1
-#define LED_CARTRIDGE   RE0 
-#define LED_CAT         RE1
-#define LED_LOCKED      RE2
+#define LED_1           LATC5
+#define LED_2           LATA2 
+#define LED_3           LATA3 
+#define LED_4           LATA5
+#define LED_ERROR       LATC0 
+#define BEEPER          LATC1
+#define LED_CARTRIDGE   LATE0 
+#define LED_CAT         LATE1
+#define LED_LOCKED      LATE2
 
 
 /* Actuators */
 #define WATERSENSORANALOG   RA1
-#define	WATERVALVEPULLUP    RD0
-#define PUMP                RD1
-#define DRYER               RD2
-#define DOSAGE              RD3
-#define BOWL_CWCCW  		RD4
-#define BOWL_ONOFF          RD5
-#define SHOVEL_UPDOWN  		RD6
-#define SHOVEL_ONOFF   		RD7
+#define	WATERVALVEPULLUP    LATD0
+#define PUMP                LATD1
+#define DRYER               LATD2
+#define DOSAGE              LATD3
+#define BOWL_CWCCW  		LATD4
+#define BOWL_ONOFF          LATD5
+#define SHOVEL_UPDOWN  		LATD6
+#define SHOVEL_ONOFF   		LATD7
 
 
 // output config   0b76543210

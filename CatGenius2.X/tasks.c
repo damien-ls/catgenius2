@@ -96,11 +96,11 @@ void waterStop()
 void waterFill()
 {
     WATERSENSOR_LED = 1;
-    fillingWater=2;
+    fillingWater=4;
 }
 void waterFillTask()
 {
-    if (fillingWater == 2) fillingWater--; // make sure the LED has enough time to switch on
+    if (fillingWater >= 2) fillingWater--; // make sure the LED has enough time to switch on
     else {
         if (fillingWater)
         {

@@ -25,11 +25,11 @@ void initHardware()
 	WPUE = 0x00;
     
     // reset all pins
-    PORTA = 0x00;
-    PORTB = 0x00;
-    PORTC = 0x00;
-    PORTD = 0x00;
-    PORTE = 0x00;
+    LATA = 0x00;
+    LATB = 0x00;
+    LATC = 0x00;
+    LATD = 0x00;
+    LATE = 0x00;
             
     // setup pin direction
     TRISA = CONF_TRISA;
@@ -38,13 +38,14 @@ void initHardware()
     TRISD = CONF_TRISD;
     TRISE = CONF_TRISE;
     
-    shovelSetPinForStop();
-    bowlStop();
     
     PUMP = 0;
     DRYER = 0;
     DOSAGE = 0;
     WATERVALVEPULLUP = 0;
+
+    shovelSetPinForStop();
+    bowlStop();
     
     // disabled initWaterSensor();
 }

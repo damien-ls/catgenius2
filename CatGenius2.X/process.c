@@ -42,13 +42,13 @@ void doProcess()
         switch (currentWork)
         {
             default:
-                currentWork = 0;
+                currentWork = NOTHING;
                 break;
 
             case FULLCLEAN:
                 if (!doFullCleaningTask(&timer)) break;
                 beepFor(30);
-                currentWork=NOTHING;
+                currentWork = NOTHING;
                 break;
 
             case CRAPPICK:
@@ -186,19 +186,23 @@ char doWash(unsigned short *nextCallSeconds)
             waterFill();
             bowlGoCW();
             addSoap();
+            state++;
+            break;
+            
+        case 3:
             if (!shovelGoDown()) break;
             *nextCallSeconds = 180;
             state++;
             break;
     
-        case 3:
+        case 4:
             if (!doEmptyWater(nextCallSeconds)) break;
             waterFill();
             *nextCallSeconds = 180;
             state++;
             break;
      
-        case 4:
+        case 5:
             if (!doEmptyWater(nextCallSeconds)) break;
             state++;
             return 1;
@@ -217,27 +221,27 @@ char doEmptyWater(unsigned short *nextCallSeconds)
         default:
             state=0;
             PUMP = 1;
-            *nextCallSeconds = 10;
+            *nextCallSeconds = 45;
             break;
     
         case 1:
             PUMP = 0;
-            *nextCallSeconds = 30;
+            *nextCallSeconds = 45;
             break;
             
         case 2:
             PUMP = 1;
-            *nextCallSeconds = 15;
+            *nextCallSeconds = 45;
             break;
             
         case 3:
             PUMP = 0;
-            *nextCallSeconds = 30;
+            *nextCallSeconds = 45;
             break;
             
         case 4:
             PUMP = 1;
-            *nextCallSeconds = 45;
+            *nextCallSeconds = 60;
             break;
            
         case 5:
@@ -299,7 +303,7 @@ char shovelGoUpShake()
             state++;
             
         case 1:
-            if (!shovelGoPosition((SHOVEL_MAX_POS / 3)*2)) return 0;
+            if (!shovelGoPosition((SHOVEL_MAX_POS / 4)*3)) return 0;
             state++; 
             
         case 2:
@@ -307,10 +311,18 @@ char shovelGoUpShake()
             state++;
             
         case 3:
-            if (!shovelGoPosition((SHOVEL_MAX_POS / 3)*2)) return 0;
+            if (!shovelGoPosition((SHOVEL_MAX_POS / 4)*3)) return 0;
             state++; 
             
         case 4:
+            if (!shovelGoPosition(SHOVEL_MAX_POS / 3)) return 0;
+            state++;
+            
+        case 5:
+            if (!shovelGoPosition((SHOVEL_MAX_POS / 4)*3)) return 0;
+            state++; 
+            
+        case 6:
             if (!shovelGoPosition(0)) return 0;
             state++;
     }
